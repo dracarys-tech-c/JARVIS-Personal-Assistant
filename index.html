@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>J.A.R.V.I.S.</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #080d18;
+  color: #d9f4ff;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.app {
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+}
+h1 {
+  color: #55d9ff;
+  letter-spacing: 7px;
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+.subtitle {
+  color: #7796a8;
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+.core {
+  width: 190px;
+  height: 190px;
+  margin: 45px auto 25px;
+  border: 2px solid #36cfff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 25px #087da8, inset 0 0 25px #087da8;
+}
+.core-inner {
+  width: 125px;
+  height: 125px;
+  border: 2px solid #8ceaff;
+  border-radius: 50%;
+  box-shadow: 0 0 30px #35cfff;
+}
+.status {
+  color: #55d9ff;
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+}
+.chat {
+  min-height: 100px;
+  padding: 18px;
+  border: 1px solid #17445b;
+  border-radius: 12px;
+  text-align: left;
+  color: #c4dce8;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+.controls {
+  display: flex;
+  gap: 8px;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #23627d;
+  background: #101d2c;
+  color: white;
+}
+button {
+  padding: 12px 15px;
+  border: 1px solid #36cfff;
+  border-radius: 8px;
+  background: #102c40;
+  color: #8ceaff;
+  font-weight: bold;
+}
+.footer {
+  color: #526b7b;
+  font-size: 10px;
+  margin-top: 35px;
+  letter-spacing: 2px;
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <h1>J.A.R.V.I.S.</h1>
+  <div class="subtitle">JUST A RATHER VERY INTELLIGENT SYSTEM</div>
+
+  <div class="core">
+    <div class="core-inner"></div>
+  </div>
+
+  <div class="status">● SYSTEM INITIALIZED</div>
+
+  <div class="chat" id="chat">
+    <strong>J.A.R.V.I.S.:</strong><br>
+    Buenas tardes. Mi interfaz está en línea.
+    Mi sistema de inteligencia todavía está en desarrollo.
+  </div>
+
+  <div class="controls">
+    <input id="message" placeholder="Escriba un mensaje...">
+    <button onclick="sendMessage()">Enviar</button>
+  </div>
+
+  <div class="footer">STARK INDUSTRIES · PERSONAL ASSISTANT</div>
+</div>
+
+<script>
+function sendMessage() {
+  const input = document.getElementById("message");
+  const chat = document.getElementById("chat");
+  const message = input.value.trim();
+
+  if (!message) return;
+
+  chat.innerHTML =
+    "<strong>TÚ:</strong><br>" + escapeHTML(message) +
+    "<br><br><strong>J.A.R.V.I.S.:</strong><br>" +
+    "Mensaje recibido. Mi conexión con el modelo de inteligencia artificial aún está pendiente.";
+
+  input.value = "";
+}
+
+function escapeHTML(text) {
+  return text.replace(/[&<>"']/g, c => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;",
+    '"': "&quot;", "'": "&#39;"
+  })[c]);
+}
+</script>
+</body>
+</html>
